@@ -9,13 +9,13 @@ app.use(express.json());
 let produtos = [];
 
 app.post("/produtos", (req, res) => {
-    const { nome, preco } = req.body;
+    const { nome, senha } = req.body;
 
-    if (!nome || !preco) {
-        return res.status(400).json({ erro: "Nome e preço são obrigatórios" });
+    if (!nome || !senha) {
+        return res.status(400).json({ erro: "Nome e senha" });
     }
 
-    const novoProduto = { id: produtos.length + 1, nome, preco };
+    const novoProduto = { id: produtos.length + 1, nome, senha };
     produtos.push(novoProduto);
 
     res.status(201).json(novoProduto);
